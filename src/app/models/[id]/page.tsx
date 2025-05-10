@@ -1,14 +1,13 @@
 import { Button } from '@/components/ui/button-fixed';
 import { virtualModels } from '@/lib/mockData';
 import Link from 'next/link';
+import { PageProps } from 'next';
 
-interface ModelPageProps {
-  params: {
-    id: string;
-  };
-}
+type ModelParams = {
+  id: string;
+};
 
-export default function ModelPage({ params }: ModelPageProps) {
+export default async function ModelPage({ params }: PageProps<ModelParams>) {
   // В реальном проекте здесь будет запрос к API для получения данных модели
   const model = virtualModels.find((m) => m.id === params.id);
 
