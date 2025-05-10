@@ -1,0 +1,91 @@
+import Link from 'next/link';
+
+export function Footer() {
+  return (
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
+              ModelMarket
+            </h3>
+            <p className="mt-4 text-sm text-gray-500">
+              Сервис для создания виртуальных моделей для любых маркетплейсов.
+              Экономьте на фотосессиях и создавайте качественный контент быстро.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
+              Сервис
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/about" className="text-sm text-gray-500 hover:text-gray-900">
+                  О сервисе
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-sm text-gray-500 hover:text-gray-900">
+                  Тарифы
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-sm text-gray-500 hover:text-gray-900">
+                  Вопросы и ответы
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
+              Аккаунт
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/login" className="text-sm text-gray-500 hover:text-gray-900">
+                  Войти
+                </Link>
+              </li>
+              <li>
+                <Link href="/register" className="text-sm text-gray-500 hover:text-gray-900">
+                  Регистрация
+                </Link>
+              </li>
+              <li>
+                <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-900">
+                  Личный кабинет
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
+              Контакты
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li className="text-sm text-gray-500">
+                Email: support@modelmarket.ru
+              </li>
+              <li className="text-sm text-gray-500">
+                Телефон: +7 (999) 123-45-67
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-8 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between">
+          <p className="text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} ModelMarket. Все права защищены.
+          </p>
+          <div className="mt-4 md:mt-0">
+            <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-900 mr-4">
+              Условия использования
+            </Link>
+            <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-900">
+              Политика конфиденциальности
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+} 
