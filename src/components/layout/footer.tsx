@@ -4,8 +4,8 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+          <div className="col-span-2 sm:col-span-2 md:col-span-1">
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
               ModelMarket
             </h3>
@@ -76,8 +76,8 @@ export function Footer() {
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} ModelMarket. Все права защищены.
           </p>
-          <div className="mt-4 md:mt-0">
-            <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-900 mr-4">
+          <div className="mt-4 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
+            <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-900">
               Условия использования
             </Link>
             <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-900">

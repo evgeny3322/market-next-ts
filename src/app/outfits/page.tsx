@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button-fixed';
+import { Button } from '@/components/ui/button';
 import { outfits } from '@/lib/mockData';
 import Image from 'next/image';
 

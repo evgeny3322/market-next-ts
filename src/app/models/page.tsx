@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button-fixed';
+import { Button } from '@/components/ui/button';
 import { virtualModels } from '@/lib/mockData';
 
 export default function ModelsPage() {

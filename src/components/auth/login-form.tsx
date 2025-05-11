@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useAuth } from '@/lib/context/auth-context';
-import { Button } from '@/components/ui/button-fixed';
+import { Button } from '@/components/ui/button';
 
 type LoginFormData = {
   email: string;

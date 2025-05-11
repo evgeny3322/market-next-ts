@@ -2,8 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useAuth } from '@/lib/context/auth-context';
-import { Button } from '@/components/ui/button-fixed';
+import { Button } from '@/components/ui/button';
 import { formatDate } from '@/lib/utils';
 import {
   currentUser,
@@ -17,14 +18,20 @@ export default function DashboardPage() {
   const { user, isAuthenticated } = useAuth();
   const router = useRouter();
 
-  // Редирект неавторизованных пользователей
+  // Используем useEffect для перенаправления
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+    }
+  }, [isAuthenticated, router]);
+
+  // Если пользователь не авторизован, возвращаем null до перенаправления
   if (!isAuthenticated) {
-    router.push('/login');
     return null;
   }
 
   // Получаем текущий тарифный план пользователя
-  const currentPlan = subscriptionPlans.find(plan => plan.id === user.subscription.plan);
+  const currentPlan = subscriptionPlans.find(plan => plan.id === user?.subscription?.plan);
   
   // Получаем последние сгенерированные изображения
   const recentImages = [...generatedImages]
@@ -242,15 +249,15 @@ export default function DashboardPage() {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Осталось генераций:</span>
                   <span className="font-medium">
-                    {user.subscription.plan === 'premium' 
+                    {user?.subscription?.plan === 'premium' 
                       ? '∞' 
-                      : user.usage.imagesRemaining}
+                      : user?.usage?.imagesRemaining}
                   </span>
                 </div>
                 
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Сгенерировано:</span>
-                  <span className="font-medium">{user.usage.imagesGenerated}</span>
+                  <span className="font-medium">{user?.usage?.imagesGenerated}</span>
                 </div>
                 
                 <div className="flex justify-between text-sm">
@@ -259,7 +266,7 @@ export default function DashboardPage() {
                 </div>
               </div>
               
-              {user.subscription.plan === 'free' && (
+              {user?.subscription?.plan === 'free' && user?.usage && (
                 <div className="mt-4">
                   <div className="h-2 bg-gray-200 rounded-full">
                     <div 

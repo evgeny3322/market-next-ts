@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button-fixed';
+import { Button } from '@/components/ui/button';
 import { generatedImages, virtualModels, outfits } from '@/lib/mockData';
 import Link from 'next/link';
 

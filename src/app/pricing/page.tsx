@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { subscriptionPlans } from '@/lib/mockData';
-import { PlanCard } from '@/components/subscription/plan-card-fixed';
+import { PlanCard } from '@/components/subscription/plan-card';
 import { useAuth } from '@/lib/context/auth-context';
 
 export default function PricingPage() {
