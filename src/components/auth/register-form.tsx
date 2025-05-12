@@ -6,14 +6,16 @@ import { useAuth } from '@/lib/context/auth-context';
 import { Button } from '@/components/ui/button';
 
 type RegisterFormData = {
-  name: string;
   email: string;
   password: string;
   confirmPassword: string;
+  firstName: string;
+  lastName: string;
 };
 
 export function RegisterForm() {
   const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const { register: registerUser, isLoading } = useAuth();
   const router = useRouter();
   
@@ -29,11 +31,58 @@ export function RegisterForm() {
   const onSubmit = async (data: RegisterFormData) => {
     try {
       setError(null);
-      await registerUser(data.email, data.password, data.name);
+      setValidationErrors({});
+      
+      console.log('Submitting form data:', {
+        email: data.email,
+        password: data.password, 
+        firstName: data.firstName,
+        lastName: data.lastName
+      });
+      
+      await registerUser(
+        data.email,
+        data.password,
+        data.firstName,
+        data.lastName
+      );
+      
       router.push('/dashboard');
     } catch (err) {
-      setError('Ошибка при регистрации. Попробуйте еще раз.');
+      console.error('Registration error:', err);
+      
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (typeof err === 'object' && err !== null) {
+        const apiError = err as any;
+        
+        // Проверяем формат ошибки API
+        if (apiError.errors && Array.isArray(apiError.errors)) {
+          const errors: Record<string, string> = {};
+          
+          apiError.errors.forEach((e: any) => {
+            if (e.path && e.msg) {
+              errors[e.path] = e.msg;
+            }
+          });
+          
+          if (Object.keys(errors).length > 0) {
+            setValidationErrors(errors);
+          } else {
+            setError(apiError.message || 'Произошла ошибка при регистрации');
+          }
+        } else {
+          setError(apiError.message || 'Произошла ошибка при регистрации');
+        }
+      } else {
+        setError('Произошла ошибка при регистрации. Попробуйте еще раз.');
+      }
     }
+  };
+
+  // Объединяем ошибки из react-hook-form с ошибками валидации от сервера
+  const getFieldError = (fieldName: keyof RegisterFormData) => {
+    return errors[fieldName]?.message || validationErrors[fieldName];
   };
 
   return (
@@ -41,38 +90,17 @@ export function RegisterForm() {
       <div className="text-center">
         <h1 className="text-2xl font-bold">Регистрация</h1>
         <p className="mt-2 text-gray-600">
-          Создайте учетную запись для доступа к сервису
+          Создайте аккаунт для использования сервиса
         </p>
       </div>
 
       {error && (
-        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">
+        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md border border-red-100">
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="space-y-2">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Имя
-          </label>
-          <input
-            id="name"
-            type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            {...register('name', {
-              required: 'Имя обязательно',
-              minLength: {
-                value: 2,
-                message: 'Имя должно содержать минимум 2 символа',
-              },
-            })}
-          />
-          {errors.name && (
-            <p className="text-sm text-red-500">{errors.name.message}</p>
-          )}
-        </div>
-
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
@@ -89,9 +117,53 @@ export function RegisterForm() {
               },
             })}
           />
-          {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
+          {getFieldError('email') && (
+            <p className="text-sm text-red-500">{getFieldError('email')}</p>
           )}
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+              Имя
+            </label>
+            <input
+              id="firstName"
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              {...register('firstName', {
+                required: 'Имя обязательно',
+                minLength: {
+                  value: 2,
+                  message: 'Имя должно содержать минимум 2 символа',
+                },
+              })}
+            />
+            {getFieldError('firstName') && (
+              <p className="text-sm text-red-500">{getFieldError('firstName')}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+              Фамилия
+            </label>
+            <input
+              id="lastName"
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              {...register('lastName', {
+                required: 'Фамилия обязательна',
+                minLength: {
+                  value: 2,
+                  message: 'Фамилия должна содержать минимум 2 символа',
+                },
+              })}
+            />
+            {getFieldError('lastName') && (
+              <p className="text-sm text-red-500">{getFieldError('lastName')}</p>
+            )}
+          </div>
         </div>
 
         <div className="space-y-2">
@@ -110,8 +182,8 @@ export function RegisterForm() {
               },
             })}
           />
-          {errors.password && (
-            <p className="text-sm text-red-500">{errors.password.message}</p>
+          {getFieldError('password') && (
+            <p className="text-sm text-red-500">{getFieldError('password')}</p>
           )}
         </div>
 
@@ -128,8 +200,8 @@ export function RegisterForm() {
               validate: (value) => value === password || 'Пароли не совпадают',
             })}
           />
-          {errors.confirmPassword && (
-            <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
+          {getFieldError('confirmPassword') && (
+            <p className="text-sm text-red-500">{getFieldError('confirmPassword')}</p>
           )}
         </div>
 

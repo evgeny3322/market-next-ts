@@ -12,7 +12,7 @@ type LoginFormData = {
 
 export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
-  const { login, isLoading } = useAuth();
+  const { login, isLoading, isAuthenticated } = useAuth();
   const router = useRouter();
   
   const {
@@ -25,9 +25,20 @@ export function LoginForm() {
     try {
       setError(null);
       await login(data.email, data.password);
+      
+      // После успешного входа перенаправляем на дашборд
+      console.log('Перенаправление на дашборд после успешной авторизации');
       router.push('/dashboard');
     } catch (err) {
-      setError('Неверный email или пароль');
+      console.error('Login error:', err);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (typeof err === 'object' && err !== null) {
+        const apiError = err as any;
+        setError(apiError.message || 'Произошла ошибка при входе. Попробуйте еще раз.');
+      } else {
+        setError('Произошла ошибка при входе. Попробуйте еще раз.');
+      }
     }
   };
 
@@ -41,7 +52,7 @@ export function LoginForm() {
       </div>
 
       {error && (
-        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">
+        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md border border-red-100">
           {error}
         </div>
       )}

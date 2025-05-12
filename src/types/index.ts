@@ -1,12 +1,26 @@
 export type User = {
   id: string;
   email: string;
-  name: string;
-  companyName?: string;
-  subscription: Subscription;
-  usage: Usage;
-  createdAt: Date;
-  updatedAt: Date;
+  firstName: string;
+  lastName: string;
+  role: 'USER' | 'ADMIN';
+  subscriptionStatus: 'FREE' | 'PREMIUM';
+  credits: number;
+};
+
+export type AuthResponse = {
+  success: boolean;
+  message: string;
+  data?: {
+    user: User;
+    token: string;
+    refreshToken: string;
+    expiresIn: number;
+  };
+  errors?: Array<{
+    param: string;
+    msg: string;
+  }>;
 };
 
 export type Subscription = {

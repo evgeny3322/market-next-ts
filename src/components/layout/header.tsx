@@ -111,7 +111,7 @@ export function Header() {
                 <div className="relative ml-3">
                   <div className="flex items-center space-x-3">
                     <span className="text-sm font-medium text-gray-700">
-                      {user?.name}
+                      {user ? `${user.firstName} ${user.lastName}` : ''}
                     </span>
                     <Button
                       variant="outline"
@@ -162,7 +162,7 @@ export function Header() {
             <>
               <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="px-3">
-                  <p className="text-base font-medium text-gray-800">{user?.name}</p>
+                  <p className="text-base font-medium text-gray-800">{user ? `${user.firstName} ${user.lastName}` : ''}</p>
                 </div>
               </div>
               
