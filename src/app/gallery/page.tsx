@@ -9,7 +9,7 @@ export default function GalleryPage() {
         <h1 className="text-3xl font-bold text-gray-900">Галерея изображений</h1>
         <Link href="/generate">
           <Button 
-            className="bg-purple-600 hover:bg-purple-700 text-white"
+            className="bg-blue-600 hover:bg-blue-700 text-white"
           >
             Сгенерировать новое
           </Button>
@@ -78,7 +78,7 @@ export default function GalleryPage() {
                       Создано: {image.createdAt.toLocaleDateString()}
                     </span>
                     {image.status === 'completed' ? (
-                      <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                      <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
                         Готово
                       </span>
                     ) : (
@@ -113,7 +113,7 @@ export default function GalleryPage() {
           <h3 className="text-xl font-bold text-gray-900 mb-2">У вас пока нет сгенерированных изображений</h3>
           <p className="text-gray-600 mb-6">Создайте своё первое изображение прямо сейчас!</p>
           <Link href="/generate">
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               Сгенерировать изображение
             </Button>
           </Link>

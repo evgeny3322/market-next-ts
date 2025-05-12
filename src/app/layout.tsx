@@ -5,8 +5,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "ModelMarket - Виртуальные модели для маркетплейсов",
-  description: "Создавайте виртуальные модели для вашего бизнеса на любых маркетплейсах",
+  title: "PixelSeller - Цифровые изображения для маркетплейсов",
+  description: "Создавайте качественные цифровые изображения для вашего бизнеса на любых маркетплейсах",
   viewport: "width=device-width, initial-scale=1.0",
 };
 

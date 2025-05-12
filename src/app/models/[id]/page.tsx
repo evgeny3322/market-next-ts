@@ -17,7 +17,7 @@ export default async function ModelPage({ params }: PageProps<ModelParams>) {
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Модель не найдена</h1>
         <p className="text-gray-600 mb-6">Запрашиваемая модель не существует или была удалена.</p>
         <Link href="/models">
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Вернуться к списку моделей
           </Button>
         </Link>
@@ -32,8 +32,8 @@ export default async function ModelPage({ params }: PageProps<ModelParams>) {
         <div className="w-full md:w-1/3">
           <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white p-4">
             <div className="h-80 bg-gray-100 flex items-center justify-center rounded-lg">
-              <div className="w-40 h-40 rounded-full bg-purple-100 flex items-center justify-center">
-                <span className="text-5xl font-bold text-purple-600">
+              <div className="w-40 h-40 rounded-full bg-blue-100 flex items-center justify-center">
+                <span className="text-5xl font-bold text-blue-600">
                   {model.parameters.gender === 'female' ? '👩' : '👨'}
                 </span>
               </div>
@@ -41,16 +41,16 @@ export default async function ModelPage({ params }: PageProps<ModelParams>) {
             <div className="mt-4">
               <h2 className="text-2xl font-bold text-gray-900">{model.name}</h2>
               {model.isDefault && (
-                <span className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mt-2 inline-block">
+                <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mt-2 inline-block">
                   Модель по умолчанию
                 </span>
               )}
               <div className="mt-4 grid grid-cols-2 gap-4">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full">
                   Редактировать
                 </Button>
                 {!model.isDefault ? (
-                  <Button className="bg-white text-purple-600 border border-purple-200 hover:bg-purple-50 w-full">
+                  <Button className="bg-white text-blue-600 border border-blue-200 hover:bg-blue-50 w-full">
                     Сделать по умолчанию
                   </Button>
                 ) : (
@@ -117,7 +117,7 @@ export default async function ModelPage({ params }: PageProps<ModelParams>) {
               
               <div className="mt-6">
                 <Link href="/generate">
-                  <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                     Сгенерировать изображение
                   </Button>
                 </Link>

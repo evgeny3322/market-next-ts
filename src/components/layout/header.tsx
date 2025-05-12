@@ -34,8 +34,8 @@ export function Header() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-2xl font-bold text-purple-600">
-                ModelMarket
+              <Link href="/" className="text-2xl font-bold text-blue-600">
+                PixelSeller
               </Link>
             </div>
             {/* Desktop Navigation */}
@@ -46,7 +46,7 @@ export function Header() {
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium ${
                     pathname === item.href
-                      ? 'bg-purple-50 text-purple-700'
+                      ? 'bg-blue-50 text-blue-700'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
                 >
@@ -60,7 +60,7 @@ export function Header() {
           <div className="flex md:hidden items-center">
             <button 
               type="button" 
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-purple-600 hover:bg-gray-100 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none"
               onClick={toggleMobileMenu}
               aria-expanded="false"
             >
@@ -100,7 +100,7 @@ export function Header() {
                       href={item.href}
                       className={`px-3 py-2 rounded-md text-sm font-medium ${
                         pathname === item.href
-                          ? 'bg-purple-50 text-purple-700'
+                          ? 'bg-blue-50 text-blue-700'
                           : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
@@ -132,7 +132,7 @@ export function Header() {
                   Войти
                 </Link>
                 <Link href="/register">
-                  <Button className="ml-2 px-4 py-2 bg-purple-600 hover:bg-purple-700">Регистрация</Button>
+                  <Button className="ml-2 px-4 py-2 bg-blue-600 hover:bg-blue-700">Регистрация</Button>
                 </Link>
               </div>
             )}
@@ -149,7 +149,7 @@ export function Header() {
               href={item.href}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 pathname === item.href
-                  ? 'bg-purple-50 text-purple-700'
+                  ? 'bg-blue-50 text-blue-700'
                   : 'text-gray-700 hover:bg-gray-50'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
@@ -173,7 +173,7 @@ export function Header() {
                     href={item.href}
                     className={`block px-3 py-2 rounded-md text-base font-medium ${
                       pathname === item.href
-                        ? 'bg-purple-50 text-purple-700'
+                        ? 'bg-blue-50 text-blue-700'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -207,7 +207,7 @@ export function Header() {
                 </Link>
                 <Link
                   href="/register"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-purple-600 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-gray-50"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Регистрация

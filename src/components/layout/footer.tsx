@@ -7,11 +7,11 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
           <div className="col-span-2 sm:col-span-2 md:col-span-1">
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
-              ModelMarket
+              PixelSeller
             </h3>
             <p className="mt-4 text-sm text-gray-500">
-              Сервис для создания виртуальных моделей для любых маркетплейсов.
-              Экономьте на фотосессиях и создавайте качественный контент быстро.
+              Сервис для создания высококачественных цифровых изображений для маркетплейсов.
+              Создавайте профессиональный контент быстро и без лишних затрат.
             </p>
           </div>
           <div>
@@ -64,7 +64,7 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-2">
               <li className="text-sm text-gray-500">
-                Email: support@modelmarket.ru
+                Email: support@pixelseller.ru
               </li>
               <li className="text-sm text-gray-500">
                 Телефон: +7 (999) 123-45-67
@@ -74,7 +74,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} ModelMarket. Все права защищены.
+            &copy; {new Date().getFullYear()} PixelSeller. Все права защищены.
           </p>
           <div className="mt-4 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
             <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-900">

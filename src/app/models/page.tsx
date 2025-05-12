@@ -8,7 +8,7 @@ export default function ModelsPage() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Мои виртуальные модели</h1>
         <Button 
-          className="bg-purple-600 hover:bg-purple-700 text-white"
+          className="bg-blue-600 hover:bg-blue-700 text-white"
         >
           Создать новую модель
         </Button>
@@ -23,8 +23,8 @@ export default function ModelsPage() {
           >
             <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white">
               <div className="h-64 bg-gray-100 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-purple-100 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-purple-600">
+                <div className="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="text-3xl font-bold text-blue-600">
                     {model.parameters.gender === 'female' ? '👩' : '👨'}
                   </span>
                 </div>
@@ -33,7 +33,7 @@ export default function ModelsPage() {
                 <div className="flex justify-between items-center">
                   <h3 className="text-xl font-semibold text-gray-900">{model.name}</h3>
                   {model.isDefault && (
-                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
                       По умолчанию
                     </span>
                   )}
@@ -54,15 +54,15 @@ export default function ModelsPage() {
         {/* Карточка для создания новой модели */}
         <div className="border border-dashed border-gray-300 rounded-lg overflow-hidden bg-white">
           <div className="h-full flex flex-col items-center justify-center p-8">
-            <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-              <span className="text-2xl text-purple-600">+</span>
+            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+              <span className="text-2xl text-blue-600">+</span>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Создать новую модель</h3>
             <p className="text-sm text-gray-600 text-center mb-4">
               Настройте параметры новой виртуальной модели
             </p>
             <Button 
-              className="bg-purple-600 hover:bg-purple-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
             >
               Создать модель
             </Button>
